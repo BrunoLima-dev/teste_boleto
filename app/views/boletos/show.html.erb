@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @boleto %>
+
+<div>
+  <%= link_to "Edit this boleto", edit_boleto_path(@boleto) %> |
+  <%= link_to "Back to boletos", boletos_path %>
+
+  <%= button_to "Destroy this boleto", @boleto, method: :delete %>
+</div>

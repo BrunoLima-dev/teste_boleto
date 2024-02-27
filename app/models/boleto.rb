@@ -1,0 +1,3 @@
+class Boleto < ApplicationRecord
+  
+end
