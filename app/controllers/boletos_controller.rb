@@ -34,6 +34,7 @@ class BoletosController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /boletos/1 or /boletos/1.json
   def update
     respond_to do |format|
@@ -58,13 +59,15 @@ class BoletosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_boleto
-      @boleto = Boleto.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def boleto_params
-      params.require(:boleto).permit(:amount, :expire_at, :bank_billet_account_id, :bank_billet_layout_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_boleto
+    @boleto = Boleto.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def boleto_params
+    params.require(:boleto).permit(:amount, :expire_at, :bank_billet_account_id, :bank_billet_layout_id, :description,
+     :cliente_id)
+  end
 end

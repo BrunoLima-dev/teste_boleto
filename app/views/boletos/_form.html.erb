@@ -32,6 +32,11 @@
   </div>
 
   <div>
+    <%= form.label :cliente_id, "Selecione um cliente:" %>
+    <%= form.collection_select :cliente_id, Cliente.all, :id, :person_name, prompt: "Selecione um cliente" %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
