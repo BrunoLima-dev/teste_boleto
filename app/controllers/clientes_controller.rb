@@ -13,7 +13,12 @@ class ClientesController < ApplicationController
   # GET /clientes/new
   def new
     @cliente = Cliente.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+
 
   # GET /clientes/1/edit
   def edit
@@ -27,9 +32,11 @@ class ClientesController < ApplicationController
       if @cliente.save
         format.html { redirect_to cliente_url(@cliente), notice: "Cliente was successfully created." }
         format.json { render :show, status: :created, location: @cliente }
+        format.js { redirect_to cliente_url(@cliente), notice: "Cliente was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -58,13 +65,15 @@ class ClientesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cliente
-      @cliente = Cliente.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def cliente_params
-      params.require(:cliente).permit(:person_name, :address, :neighborhood, :zipcode, :city_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cliente
+    @cliente = Cliente.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def cliente_params
+    params.require(:cliente).permit(:person_name, :address, :neighborhood, :zipcode, :city_name, :address_number,
+      :cnpj_cpf, :email, :person_type, :phone_number, :state)
+  end
 end
