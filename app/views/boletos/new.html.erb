@@ -1,9 +1,9 @@
-<h1>New boleto</h1>
+<h1 style="color: blue; font-size: 30px;">New boleto</h1>
 
 <%= render "form", boleto: @boleto %>
 
 <br>
 
 <div>
-  <%= link_to "Back to boletos", boletos_path %>
+  <%= link_to "Back to boletos", boletos_path, data: { disable_with: 'Salvando...' } %>
 </div>

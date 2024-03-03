@@ -1,9 +1,8 @@
-<h1>New cliente</h1>
+<h1 style="color: blue; font-size: 30px;">New cliente</h1>
 
 <%= render "form", cliente: @cliente %>
 
 <br>
-
 <div>
-  <%= link_to "Back to clientes", clientes_path %>
+  <%= link_to "Back to clientes", clientes_path, data: { disable_with: 'Salvando...' } %>
 </div>

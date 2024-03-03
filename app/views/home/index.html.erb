@@ -1,98 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <title>Dashboard - SB Admin</title>
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
-  <style>
-    .container {
-      display: flex;
-      padding-left: 0;
-      margin-left: 0;
-      --bs-gutter-x: 0;
-      --bs-gutter-y: 0;
-    }
-    div.container {
-      flex: 200 0 5px; /* largura do menu */
-      padding-left: 0; /* Remover o espaço do lado esquerdo */
-      margin-left: 0;
-      max-width: 700px;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <title>Dashboard - SB Admin</title>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
+    <style>
+      .container {
+        display: flex;
+      }
 
-    #layoutSidenav_nav {
-      flex: 100 0 5px; /* largura do menu */
-      padding-left: 0; /* Remover o espaço do lado esquerdo */
-      margin-left: 0;
-      max-width: 700px;
-    }
+      div.container {
+        padding-left: 0; /* Remover o espaço do lado esquerdo */
+        padding-right: 0; /* Remover o espaço do lado direito */
+        margin-left: 0;
+        margin-right: 0;
+      }
 
-    #layoutSidenav_content {
-      width: 50%
-      padding-left: 0; /* Remover o espaço do lado esquerdo */
-      margin-left: 0;
-    }
+      #layoutSidenav_nav {
+        width: 50%
+      }
 
-    footer {
-      margin: auto; /* Coloca o footer no final da página */
-    }
-  </style>
-</head>
-<body>
-  <nav class="sb-topnav navbar navbar-dark bg-dark">
-    <!-- Navbar Brand-->
-    <%= link_to "Gerenciador de Boletos", root_path, class: "navbar-brand ps-3" %>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
-    </form>
-    <!-- Navbar-->    
-  </nav>
+      #layoutSidenav_content {
+        width: 50%
+        padding-left: 0; /* Remover o espaço do lado esquerdo */
+        margin-left: 0;
+      }
 
-  <div class="container">
-    <div id="layoutSidenav_nav">
-      <nav class="sb-sidenav accordion sb-sidenav-dark col-md-3 col-lg-2 d-md-block bg-dark sidebar vh-100" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-          <div class="nav">
-            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i> Pages</div>
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <%= link_to "Customer", clientes_path, class: "render", data: { turbo_frame: "pages" } %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "Boleto", boletos_path, class: "render" %>
-                  </li>
-                </ul>
-              </nav>
+      footer {
+        margin: auto; /* Coloca o footer no final da página */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="sb-topnav navbar navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <%= link_to "Bill Manager", root_path, class: "navbar-brand ps-3" %>
+      <!-- Sidebar Toggle-->
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+          <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+      </form>
+      <!-- Navbar-->    
+    </nav>
+
+    <div class="container">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav  col-md-4 col-lg-6 d-md-block bg-dark sidebar vh-100" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <a href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                <span class="ms-2">Pages</span>
+                <div class="sb-sidenav-collapse-arrow ms-4"><i class="fas fa-angle-down"></i></div>
+              </a>
+              <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav " id="sidenavAccordionPages">
+                  <ul class="nav flex-column">
+                    <li class="nav-item mt-4">
+                      <a href="#collapseCustomer" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseCustomer" class="nav-link">
+                        <div>Customer</div>
+                        <div class="sb-sidenav-collapse-arrow ms-5"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <ul class="nav flex-column sub-menu collapse ms-4" id="collapseCustomer">
+                        <li class="nav-item">
+                          <%= link_to "Novo Customer", new_cliente_path, class: "render nav-link", data: { turbo_frame: "pages" } %>
+                        </li>                        
+                        <li class="nav-item">
+                          <%= link_to "Index de Customer", clientes_path(:index), class: "render nav-link", data: { turbo_frame: "pages" } %>
+                        </li>
+                      </ul>
+                    </li>
+                    <div class="mt-2">
+                      <a href="#collapserBoleto" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapserBoleto" class="nav-link">
+                        <div>Boleto</div>
+                        <div class="sb-sidenav-collapse-arrow ms-5"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <ul class="nav flex-column sub-menu collapse ms-4" id="collapserBoleto">
+                        <li class="nav-item">
+                          <%= link_to "Novo Billet", new_boleto_path, class: "render nav-link", data: { turbo_frame: "pages" } %>
+                        </li>                        
+                        <li class="nav-item">
+                          <%= link_to "Index de Billet", boletos_path(:index), class: "render nav-link", data: { turbo_frame: "pages" } %>
+                        </li>
+                      </ul>
+                    </div>
+                  </ul>
+                </nav>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-      </nav>
-    </div>
-
-    <div id="layoutSidenav_content">
-      <main>
-        <turbo-frame id="pages">
-          <%= yield %>
-        </turbo-frame>
-      </main>
-    </div>
-  </div> 
-</body>
-
+          <!-- Divider -->
+          <hr class="sidebar-divider d-none d-md-block">
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <turbo-frame id="pages">
+            <%= yield %>
+          </turbo-frame>
+        </main>
+      </div>
+    </div> 
+  </body>
  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const links = document.querySelectorAll('.render');

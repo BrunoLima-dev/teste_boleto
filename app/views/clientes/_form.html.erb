@@ -9,64 +9,88 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :person_name, style: "display: block" %>
-    <%= form.text_field :person_name %>
-  </div>
+  <% end %>  
   
-  <div>
-    <%= form.label :cnpj_cpf, style: "display: block" %>
-    <%= form.text_field :cnpj_cpf %>
-  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= form.label :person_name, 'Person Name:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :person_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :person_name, 'Person Name:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :person_name, class: 'form-control' %>
+      </div>
+    </div>
+   </div>
   
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-  
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-  
-  <div>
-    <%= form.label :phone_number, style: "display: block" %>
-    <%= form.text_field :phone_number %>
-  </div>
-  
-  <div>
-    <%= form.label :person_type, style: "display: block" %>
-    <%= form.text_field :person_type %>
-  </div>
+    <div class="form-group">
+      <%= form.label :cnpj_cpf, 'CNPJ/CPF:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :cnpj_cpf, class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :state, 'State:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :state, class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :phone_number, 'Phone Number:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :phone_number, class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :person_type, 'Person Type:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :person_type, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
-  </div>
-  
-  <div>
-    <%= form.label :address_number, style: "display: block" %>
-    <%= form.text_field :address_number %>
-  </div>
+    <div class="form-group">
+      <%= form.label :address, 'Address:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :address, class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :address_number, 'Address Number:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :address_number, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :neighborhood, style: "display: block" %>
-    <%= form.text_field :neighborhood %>
-  </div>
+    <div class="form-group">
+      <%= form.label :neighborhood, 'Neighborhood:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :neighborhood, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :zipcode, style: "display: block" %>
-    <%= form.text_field :zipcode %>
-  </div>
+    <div class="form-group">
+      <%= form.label :zipcode, 'Zip Code:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :zipcode, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :city_name, style: "display: block" %>
-    <%= form.text_field :city_name %>
-  </div>
+    <div class="form-group">
+      <%= form.label :city_name, 'City Name:', style: "display: block" %>
+      <div class="col-md-8 col-sm-8">
+        <%= form.text_field :city_name, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+ 
 <% end %>
