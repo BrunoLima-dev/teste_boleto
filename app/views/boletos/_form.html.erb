@@ -13,27 +13,27 @@
 
   <div>
     <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
+    <%= form.number_field :amount, step: "0.01", required: true %>
   </div>
 
   <div>
     <%= form.label :expire_at, style: "display: block" %>
-    <%= form.date_field :expire_at %>
+    <%= form.date_field :expire_at, required: true %>
   </div>
 
   <div>
     <%= form.label :bank_billet_account_id, style: "display: block" %>
-    <%= form.number_field :bank_billet_account_id %>
+    <%= form.number_field :bank_billet_account_id, required: true %>
   </div>
 
   <div>
     <%= form.label :bank_billet_layout_id, style: "display: block" %>
-    <%= form.number_field :bank_billet_layout_id %>
+    <%= form.number_field :bank_billet_layout_id, required: true %>
   </div>
 
   <div>
     <%= form.label :cliente_id, "Selecione um cliente:" %>
-    <%= form.collection_select :cliente_id, Cliente.all, :id, :person_name, prompt: "Selecione um cliente" %>
+    <%= form.collection_select :cliente_id, Cliente.all, :id, :person_name, required: true, prompt: "Selecione um cliente" %>
   </div>
 
   <div class="form-group">

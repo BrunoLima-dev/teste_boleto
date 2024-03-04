@@ -1,86 +1,80 @@
 <%= form_for @cliente do |form| %>
-  <% if cliente.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-
+  <% if @cliente.errors.any? %>
+    <div class="alert alert-danger">
       <ul>
-        <% cliente.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @cliente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
-    <% elsif @cliente.api_errors.present? %>
-      <div class="alert alert-danger">
-        <%= @cliente.api_errors.join('<br>').html_safe %>
-      </div>
-  <% end %>  
+  <% end %>
   
   <div class="row">
     <div class="form-group">
       <%= form.label :person_name, 'Person Name:', style: "display: block" %>
       <div class="col-md-8 col-sm-10">
-        <%= form.text_field :person_name, class: 'form-control' %>
+        <%= form.text_field :person_name, required: true, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
       <%= form.label :cnpj_cpf, 'CNPJ/CPF:', style: "display: block" %>
       <div class="col-md-8 col-sm-8">
-        <%= form.text_field :cnpj_cpf, class: 'form-control' %>
+        <%= form.text_field :cnpj_cpf, required: true, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
       <%= form.label :phone_number, 'Phone Number:', style: "display: block" %>
       <div class="col-md-8 col-sm-8">
-        <%= form.text_field :phone_number, class: 'form-control' %>
+        <%= form.text_field :phone_number, required: true, class: 'form-control' %>
       </div>
     </div>
   </div>
   <div class="form-group">
     <%= form.label :state, 'State:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :state, class: 'form-control' %>
+      <%= form.text_field :state, required: true, class: 'form-control' %>
     </div>
   </div>  
   
   <div class="form-group">
     <%= form.label :person_type, 'Person Type:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :person_type, class: 'form-control' %>
+      <%= form.text_field :person_type, required: true, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :address, 'Address:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :address, class: 'form-control' %>
+      <%= form.text_field :address, required: true, class: 'form-control' %>
     </div>
   </div>
   
   <div class="form-group">
     <%= form.label :address_number, 'Address Number:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :address_number, class: 'form-control' %>
+      <%= form.text_field :address_number, required: true, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :neighborhood, 'Neighborhood:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :neighborhood, class: 'form-control' %>
+      <%= form.text_field :neighborhood, required: true, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :zipcode, 'Zip Code:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :zipcode, class: 'form-control' %>
+      <%= form.text_field :zipcode, required: true, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :city_name, 'City Name:', style: "display: block" %>
     <div class="col-md-8 col-sm-8">
-      <%= form.text_field :city_name, class: 'form-control' %>
+      <%= form.text_field :city_name, required: true, class: 'form-control' %>
     </div>
   </div>
 
