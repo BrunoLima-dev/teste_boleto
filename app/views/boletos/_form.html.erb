@@ -1,4 +1,4 @@
-<%= form_with(model: boleto) do |form| %>
+<%= form_for(@boleto, html: { class: "form-horizontal", role: "form" }) do |form| %>
   <% if boleto.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(boleto.errors.count, "error") %> prohibited this boleto from being saved:</h2>
@@ -36,7 +36,9 @@
     <%= form.collection_select :cliente_id, Cliente.all, :id, :person_name, prompt: "Selecione um cliente" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
