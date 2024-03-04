@@ -5,7 +5,7 @@ module BilletRules
     end
 
     def call
-      @bank_billet = BoletoSimples::BankBillet.create(
+      @response = BoletoSimples::BankBillet.create(
         amount: @billet.amount,
         expire_at: @billet.expire_at,
         customer_address: @billet.cliente.address,
@@ -21,8 +21,12 @@ module BilletRules
         customer_zipcode: @billet.cliente.zipcode
       )
 
-      # Atualiza o estado do boleto no banco de dados local
-      @billet.update(boleto_simples_id: @bank_billet.id) if @bank_billet.present?
+      if @response.errors.present?
+        @billet.api_errors = @response.errors.full_messages.join(', ')
+        raise StandardError, "Error creating customer: #{@response}"
+      else
+        puts 'Billet created successfully!'
+      end
     end
   end
 end

@@ -28,7 +28,7 @@ class ClientesController < ApplicationController
     @cliente = Cliente.new(cliente_params)
 
     respond_to do |format|
-      if @cliente.save
+      if create_customer_api
         format.html { redirect_to cliente_url(@cliente), notice: "Cliente was successfully created." }
         format.json { render :show, status: :created, location: @cliente }
       else
@@ -66,6 +66,16 @@ class ClientesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_cliente
     @cliente = Cliente.find(params[:id])
+  end
+
+  def create_customer_api
+    response = ::CustomerRules::CreateCustomer.new(@cliente).call
+    if response.is_a?(String)
+      @error_message = response
+
+      return false
+    end
+    response
   end
 
   # Only allow a list of trusted parameters through.
