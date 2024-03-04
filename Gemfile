@@ -54,6 +54,8 @@ gem 'rspec-rails', '~> 5.0'
 
 gem 'httparty'
 
+gem 'cpf_cnpj'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
