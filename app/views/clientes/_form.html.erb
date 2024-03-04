@@ -1,4 +1,4 @@
-<%= form_for(@cliente, html: { class: "form-horizontal", role: "form" }) do |form| %>
+<%= form_for @cliente do |form| %>
   <% if cliente.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
@@ -9,6 +9,10 @@
         <% end %>
       </ul>
     </div>
+    <% elsif @cliente.api_errors.present? %>
+      <div class="alert alert-danger">
+        <%= @cliente.api_errors.join('<br>').html_safe %>
+      </div>
   <% end %>  
   
   <div class="row">

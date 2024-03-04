@@ -3,6 +3,8 @@ class Cliente < ApplicationRecord
 
   validates :person_name, :address, :neighborhood, :zipcode, :city_name, presence: true
 
+  serialize :api_errors, JSON
+
   before_save :create_custumer_api
 
   private

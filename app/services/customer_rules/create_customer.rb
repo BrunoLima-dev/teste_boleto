@@ -19,11 +19,10 @@ module CustomerRules
       )
 
       if @response.errors.present?
-        # A API retornou um erro, então não salvamos o cliente localmente
+        @customer.api_errors = @response.errors.full_messages.join(', ')
         raise StandardError, "Error creating customer: #{@response}"
       else
-        # A API retornou sucesso, então salvamos o cliente localmente
-        @customer.save
+        puts 'Customer created successfully!'
       end
     end
   end
