@@ -3,7 +3,16 @@ class BoletosController < ApplicationController
 
   # GET /boletos or /boletos.json
   def index
-    @boletos = Boleto.all
+    @clientes = Cliente.all
+    @clientes_options = @clientes.map { |c| [c.person_name, c.id] }
+
+    if params[:cliente_id].present?
+      @boletos = Boleto.where(cliente_id: params[:cliente_id])
+    else
+      @boletos = Boleto.all
+    end
+
+    @total_boletos = @boletos.count
   end
 
   # GET /boletos/1 or /boletos/1.json

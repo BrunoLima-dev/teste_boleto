@@ -1,14 +1,89 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Boletos</h1>
-
-<div id="boletos">
-  <% @boletos.each do |boleto| %>
-    <%= render boleto %>
-    <p>
-      <%= link_to "Show this boleto", boleto %>
-    </p>
+<%= form_tag boletos_path, method: 'get'  do %>
+<div class="main">
+  <p style="color: green"><%= notice %></p>
+  <br>
+  <div class="row" >  
+    <div class="form-group col-sm-5">
+      <%= label_tag "Cliente:" %>
+      <%= select_tag :cliente_id, options_for_select(@clientes_options, params[:cliente_id]), class: "form-control" %>
+    </div>
+   
+  </div>
+  <div class="row" >
+    <div class="form-group col-sm-4">
+      <%= label_tag "Data de" %>
+      <%= date_field_tag :min, params[:min],class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= label_tag "Data até" %>
+      <%= date_field_tag :max, params[:max],class: 'form-control' %>
+    </div>
+  </div>
+  <br>
+  <div class="row" >
+    <div class="col-sm-5">
+      <%= button_tag(value: "commit",type: 'submit', class: "btn btn-success") do %>
+        <i class="fa fa-search"></i> Pesquisar
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class="card py-2">
+    <div class="row col-12 d-flex justify-content-between ">
+      <div class="col-3 col-sm-3"> 
+        Total De Boletos - <strong><%= @total_boletos rescue 0 %></strong>
+      </div>
+    </div>
+  </div>
+  <br>
   <% end %>
+  <%- model_class = Boleto -%>
+  <div class="page-header">
+    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  </div>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr class="text-center">
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:amount) %></th>
+        <th><%= model_class.human_attribute_name(:description) %></th>
+        <th><%= model_class.human_attribute_name(:expire_at) %></th>
+        <th><%= model_class.human_attribute_name(:bank_billet_account_id) %></th>
+        <th><%= model_class.human_attribute_name(:bank_billet_layout_id) %></th>
+        <th style="width: 170px" ><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @boletos.each do |boleto| %>
+        <% cliente = boleto.cliente %>
+        <% if cliente %>
+          <tr class="text-center">
+            <td><%= link_to boleto.id, boleto_path(boleto) %></td>
+            <td><%= boleto.amount %></td>
+            <td><%= cliente.person_name %></td>
+            <td><%= boleto.description %></td>
+            <td><%= boleto.expire_at %></td>
+            <td><%= boleto.bank_billet_account_id %></td>
+            <td><%= boleto.bank_billet_layout_id %></td>      
+            <td>
+              <%= link_to content_tag(:i,nil, class: ["fas", "fa-eye"]),
+                          boleto_path(boleto), :class => 'btn btn-success btn-xs' %>
+              <% if %>
+                <%= link_to content_tag(:i,nil, class: ["fas", "fa-edit"]),
+                          edit_boleto_path(boleto),method: :get, :class => 'btn btn-primary btn-xs' %>
+              <% end %>         
+              <% if %>
+                <%= link_to content_tag(:i,nil, class: ["fas", "fa-trash"]),
+                          boleto_path(boleto),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-xs btn-danger' %>
+              <% end %>          
+            </td>      
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New boleto", new_boleto_path, class:"btn btn-primary" %>
